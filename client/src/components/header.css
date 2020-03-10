@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+.nav-right {
+  margin-left: auto;
+  display: flex;
+}
+
+p {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 5vw;
+}
