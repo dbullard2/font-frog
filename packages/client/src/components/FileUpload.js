@@ -38,38 +38,42 @@ const FileUpload = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
-    const extensionList = ['ttf', 'otf', 'woff', 'woff2'];
-    const extension = file.name.split('.').pop();
-    if (extensionList.includes(extension) === false) {
+    if (file.name === undefined) {
       alert2();
     } else {
-      try {
-        const res = await axios.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          onUploadProgress: progressEvent => {
-            // Clear percentage
+      const extensionList = ['ttf', 'otf', 'woff', 'woff2'];
+      const extension = file.name.split('.').pop();
+      if (extensionList.includes(extension) === false) {
+        alert2();
+      } else {
+        try {
+          const res = await axios.post('/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            },
+            onUploadProgress: progressEvent => {
+              // Clear percentage
+            }
+          });
+
+          const { fileName, filePath } = res.data;
+
+          setUploadedFile({ fileName, filePath });
+          setUploaded(true);
+
+          const hide = e => {
+            document.getElementById('main').style.display = 'none';
+          };
+
+          hide();
+
+          setMessage('File Uploaded');
+        } catch (err) {
+          if (err.response.status === 500) {
+            setMessage('There was a problem with the server');
+          } else {
+            setMessage(err.response.data.msg);
           }
-        });
-
-        const { fileName, filePath } = res.data;
-
-        setUploadedFile({ fileName, filePath });
-        setUploaded(true);
-
-        const hide = e => {
-          document.getElementById('main').style.display = 'none';
-        };
-
-        hide();
-
-        setMessage('File Uploaded');
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
         }
       }
     }

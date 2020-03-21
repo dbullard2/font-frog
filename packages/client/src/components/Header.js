@@ -74,12 +74,7 @@ const Header = () => {
   const hideReviews = e => {
     var reviews = document.getElementById('reviews');
     reviews.style.display = 'none';
-    var d = new Date()
-      .toString()
-      .split(' ')
-      .splice(1, 3)
-      .join(' ');
-    document.write(d);
+    //get the date var d = new Date().toString().split(' ').splice(1, 3).join(' ');
   };
 
   return (
