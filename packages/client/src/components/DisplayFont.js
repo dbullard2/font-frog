@@ -4,10 +4,6 @@ import * as opentype from 'opentype.js';
 import './index.css';
 
 const DisplayFont = ({ file }) => {
-  /*var font = file;
-  font = JSON.stringify(font);
-  font = font.slice(13, -2);*/
-
   opentype.load(file, function(err, font) {
     if (err) {
       console.log('font couldnt be loaded');
@@ -70,7 +66,6 @@ const DisplayFont = ({ file }) => {
 
   const sampleText = e => {
     var inputBox = document.getElementById('input');
-    document.getElementById('output').value = inputBox.value;
 
     opentype.load(file, function(err, font) {
       if (err) {
@@ -87,11 +82,11 @@ const DisplayFont = ({ file }) => {
 
   return (
     <div>
-      <canvas id='canvas'></canvas>
+      <input type='text' id='input' onChange={sampleText} placeholder='Type here to preview text' />
       <input type='range' name='' id='slider' onChange={sliderVal} />
+      <br />
+      <canvas id='canvas'></canvas>
       <p id='fontSize'></p>
-      <input type='text' id='input' onChange={sampleText} />
-      <input type='text' id='output' disabled />
       <div id='glyphs'></div>
     </div>
   );

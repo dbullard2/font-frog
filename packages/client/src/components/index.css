@@ -119,4 +119,20 @@ input[type='submit'] {
 #glyphs {
   display: flex;
   flex-flow: wrap;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+#glyphs span {
+  display: none;
+}
+
+#input {
+  border: none;
+  border-bottom: 1px solid #ff4cb4;
+  float: left;
+}
+
+#slider {
+  float: left;
 }
