@@ -1,4 +1,8 @@
 import React, { Fragment } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStarHalf } from '@fortawesome/free-solid-svg-icons';
+import Index from './Todo-List/Index';
 import logo from '../img/logo.svg';
 import './header.css';
 
@@ -77,6 +81,16 @@ const Header = () => {
     //get the date var d = new Date().toString().split(' ').splice(1, 3).join(' ');
   };
 
+  /* Feedback Modal ###################################################### */
+
+  const showFeedback = e => {
+    document.getElementById('feedback').style.display = 'block';
+  };
+
+  const hideFeedback = e => {
+    document.getElementById('feedback').style.display = 'none';
+  };
+
   return (
     <Fragment>
       <header>
@@ -85,7 +99,7 @@ const Header = () => {
           <h1 className='logo'>Font Frog</h1>
         </div>
         <div className='nav-right'>
-          <p>Feedback</p>
+          <p onClick={showFeedback}>Feature Request</p>
           <p onClick={showReviews}>Reviews</p>
         </div>
       </header>
@@ -126,9 +140,22 @@ const Header = () => {
           <h1>Reviews</h1>
           <div className='reviews'>
             <div className='review'>
-              <input type='text' placeholder='Name' id='name' maxLength='15' />
+              <div className='top'>
+                <input type='text' placeholder='Enter your name' id='name' maxLength='15' />
+                <div className='rating'></div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div id='feedback' className='modal'>
+        <div className='feedback-content'>
+          <span className='close' onClick={hideFeedback}>
+            &times;
+          </span>
+          <h1>Feature Requests</h1>
+          <Index />
         </div>
       </div>
 
