@@ -16,7 +16,8 @@
     "react-dropzone": "^10.2.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.8",
-    "react-star-rating-component": "^1.4.1"
+    "react-star-rating-component": "^1.4.1",
+    "uploads": "file:/public/uploads"
   },
   "scripts": {
     "start": "react-scripts start",
