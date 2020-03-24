@@ -1,7 +1,4 @@
 import React, { Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStarHalf } from '@fortawesome/free-solid-svg-icons';
 import Index from './Todo-List/Index';
 import logo from '../img/logo.svg';
 import './header.css';

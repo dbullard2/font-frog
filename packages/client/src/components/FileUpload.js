@@ -107,9 +107,9 @@ const FileUpload = () => {
         </div>
       </div>
       {uploadedFile ? (
-        <div className='row mt-5'>
-          <div className='col-md-6 m-auto'>
-            <h3 className='text-center'>{uploadedFile.fileName}</h3>
+        <div className='info'>
+          <div>
+            <h1 className='text-center'>{uploadedFile.fileName}</h1>
           </div>
         </div>
       ) : null}

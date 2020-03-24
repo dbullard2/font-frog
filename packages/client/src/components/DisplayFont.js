@@ -60,7 +60,7 @@ const DisplayFont = ({ file }) => {
   };
 
   const sliderVal = e => {
-    document.getElementById('fontSize').innerHTML = document.getElementById('slider').value;
+    document.getElementById('fontSize').innerHTML = document.getElementById('slider').value + ' px';
     reloadFont();
   };
 
@@ -82,11 +82,16 @@ const DisplayFont = ({ file }) => {
 
   return (
     <div>
-      <input type='text' id='input' onChange={sampleText} placeholder='Type here to preview text' />
-      <input type='range' name='' id='slider' onChange={sliderVal} />
-      <br />
-      <canvas id='canvas'></canvas>
-      <p id='fontSize'></p>
+      <div className='info'>
+        <div className='display-font-top'>
+          <input type='text' id='input' onChange={sampleText} placeholder='Type here to preview text' />
+          <input type='range' name='' id='slider' onChange={sliderVal} />
+          <p id='fontSize'>50px</p>
+        </div>
+        <br />
+        <canvas id='canvas'></canvas>
+      </div>
+
       <div id='glyphs'></div>
     </div>
   );

@@ -7,6 +7,7 @@ x when a valid file is uploaded, hide FileUpload component and display DisplayFo
     - organise css
     -organise js functions
     - find and remove unused code
+    - commbine header.css and style.scss
 - create admin page w/ login
 - integrate firebase so that feedback requests persist - https://blog.bitsrc.io/building-a-todo-app-in-react-with-firebase-and-redux-ba3ab53a671b
     x only show unchecked trash icon & ability to check boxes on admin page
