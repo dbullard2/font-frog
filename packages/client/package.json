@@ -17,7 +17,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "2.1.8",
     "react-star-rating-component": "^1.4.1",
-    "uploads": "file:/public/uploads"
+    "uploads": "file:/public/uploads/test.test"
   },
   "scripts": {
     "start": "react-scripts start",
