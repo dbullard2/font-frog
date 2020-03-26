@@ -47,7 +47,7 @@ const FileUpload = () => {
         alert2();
       } else {
         try {
-          const res = await axios.post('/upload', formData, {
+          const res = await axios.post('/uploads', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
@@ -85,7 +85,12 @@ const FileUpload = () => {
         <form onSubmit={onSubmit} id='test'>
           <h1>Drag & drop your font file here!</h1>
           <div className='custom-file mb-4'>
-            <input type='file' className='custom-file-input' id='customFile' onChange={onChange} />
+            <input
+              type='file'
+              className='custom-file-input'
+              id='customFile'
+              onChange={onChange}
+            />
             <label className='custom-file-label' htmlFor='customFile'>
               Or upload your font manually
             </label>
@@ -103,7 +108,10 @@ const FileUpload = () => {
             &times;
           </span>
           <img src={logo} alt='Font Frog Logo' />
-          <p>Font Frog only accepts .ttf, .otf, .woff, & .woff2 files. Please upload a compatible file</p>
+          <p>
+            Font Frog only accepts .ttf, .otf, .woff, & .woff2 files. Please upload a
+            compatible file
+          </p>
         </div>
       </div>
       {uploadedFile ? (
