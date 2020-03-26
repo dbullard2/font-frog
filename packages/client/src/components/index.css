@@ -4,7 +4,10 @@ body {
 
 #canvas {
   border: 1px solid black;
-  width: 90vw !important;
+}
+
+#new-canvas {
+  border: 1px solid black;
 }
 
 .info {

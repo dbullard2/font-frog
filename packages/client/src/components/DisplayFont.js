@@ -9,12 +9,14 @@ const DisplayFont = ({ file }) => {
       console.log('font couldnt be loaded');
     } else {
       var ctx = document.getElementById('canvas').getContext('2d');
+      var nctx = document.getElementById('new-canvas').getContext('2d');
       var ctxObj = document.getElementById('canvas');
       ctxObj.height = 100;
       ctxObj.width = 800;
       var text = 'Woven silk pyjamas exchanged for blue quartz.';
       var test = document.getElementById('slider').value;
       font.draw(ctx, text, 0, 50, test);
+      font.draw(nctx, text, 0, 50, test);
 
       var glyphsDiv = document.getElementById('glyphs');
       var amount = font.glyphs.length;
@@ -30,7 +32,18 @@ const DisplayFont = ({ file }) => {
   const createGlyphCanvas = (glyph, size) => {
     var canvasId, html, glyphsDiv, wrap, canvas, ctx;
     canvasId = 'c' + glyph.index;
-    html = '<div class="wrapper glyph-canvas" style="width:' + size + 'px"><canvas id="' + canvasId + '" width="' + size + '" height="' + size + '"></canvas><span>' + glyph.index + '</span></div>';
+    html =
+      '<div class="wrapper glyph-canvas" style="width:' +
+      size +
+      'px"><canvas id="' +
+      canvasId +
+      '" width="' +
+      size +
+      '" height="' +
+      size +
+      '"></canvas><span>' +
+      glyph.index +
+      '</span></div>';
     glyphsDiv = document.getElementById('glyphs');
     wrap = document.createElement('div');
     wrap.innerHTML = html;
@@ -60,7 +73,8 @@ const DisplayFont = ({ file }) => {
   };
 
   const sliderVal = e => {
-    document.getElementById('fontSize').innerHTML = document.getElementById('slider').value + ' px';
+    document.getElementById('fontSize').innerHTML =
+      document.getElementById('slider').value + ' px';
     reloadFont();
   };
 
@@ -84,11 +98,19 @@ const DisplayFont = ({ file }) => {
     <div>
       <div className='info'>
         <div className='display-font-top'>
-          <input type='text' id='input' onChange={sampleText} placeholder='Type here to preview text' />
+          <input
+            type='text'
+            id='input'
+            onChange={sampleText}
+            placeholder='Type here to preview text'
+          />
           <input type='range' name='' id='slider' onChange={sliderVal} />
           <p id='fontSize'>50px</p>
         </div>
         <br />
+        <div className='info'>
+          <canvas id='new-canvas'></canvas>
+        </div>
         <canvas id='canvas'></canvas>
       </div>
 
