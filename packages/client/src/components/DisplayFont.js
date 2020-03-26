@@ -9,14 +9,12 @@ const DisplayFont = ({ file }) => {
       console.log('font couldnt be loaded');
     } else {
       var ctx = document.getElementById('canvas').getContext('2d');
-      var nctx = document.getElementById('new-canvas').getContext('2d');
       var ctxObj = document.getElementById('canvas');
       ctxObj.height = 100;
       ctxObj.width = 800;
       var text = 'Woven silk pyjamas exchanged for blue quartz.';
       var test = document.getElementById('slider').value;
       font.draw(ctx, text, 0, 50, test);
-      font.draw(nctx, text, 0, 50, test);
 
       var glyphsDiv = document.getElementById('glyphs');
       var amount = font.glyphs.length;
@@ -109,9 +107,8 @@ const DisplayFont = ({ file }) => {
         </div>
         <br />
         <div className='info'>
-          <canvas id='new-canvas'></canvas>
+          <canvas id='canvas'></canvas>
         </div>
-        <canvas id='canvas'></canvas>
       </div>
 
       <div id='glyphs'></div>

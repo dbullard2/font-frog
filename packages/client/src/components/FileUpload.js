@@ -79,10 +79,82 @@ const FileUpload = () => {
     }
   };
 
+  //Drag and Drop Functionality
+  const handleDragEnter = e => {
+    document.getElementById('test').style.borderColor = '#ff4cb4';
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragLeave = e => {
+    document.getElementById('test').style.borderColor = '#00f534';
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragOver = e => {
+    document.getElementById('test').style.borderColor = '#ff4cb4';
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDrop = async e => {
+    document.getElementById('test').style.borderColor = '#00f534';
+    e.preventDefault();
+    e.stopPropagation();
+
+    let file = e.dataTransfer.files;
+    file = file[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    const extensionList = ['ttf', 'otf', 'woff', 'woff2'];
+    const extension = file.name.split('.').pop();
+    if (extensionList.includes(extension) === false) {
+      alert2();
+    } else {
+      try {
+        const res = await axios.post('/uploads', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          },
+          onUploadProgress: progressEvent => {
+            // Clear percentage
+          }
+        });
+
+        const { fileName, filePath } = res.data;
+
+        setUploadedFile({ fileName, filePath });
+        setUploaded(true);
+
+        const hide = e => {
+          document.getElementById('main').style.display = 'none';
+        };
+
+        hide();
+
+        setMessage('File Uploaded');
+      } catch (err) {
+        if (err.response.status === 500) {
+          setMessage('There was a problem with the server');
+        } else {
+          setMessage(err.response.data.msg);
+        }
+      }
+    }
+  };
+
   return (
     <Fragment>
       <div className='drop-container' id='main'>
-        <form onSubmit={onSubmit} id='test'>
+        <form
+          onSubmit={onSubmit}
+          id='test'
+          onDragEnter={e => handleDragEnter(e)}
+          onDragLeave={e => handleDragLeave(e)}
+          onDragOver={e => handleDragOver(e)}
+          onDrop={e => handleDrop(e)}
+        >
           <h1>Drag & drop your font file here!</h1>
           <div className='custom-file mb-4'>
             <input
