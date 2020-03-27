@@ -9,9 +9,7 @@ const DisplayFont = ({ file }) => {
       console.log('font couldnt be loaded');
     } else {
       var ctx = document.getElementById('canvas').getContext('2d');
-      var ctxObj = document.getElementById('canvas');
-      ctxObj.height = 100;
-      ctxObj.width = 800;
+      ctx.canvas.width = 0.9 * window.innerWidth;
       var text = 'Woven silk pyjamas exchanged for blue quartz.';
       var test = document.getElementById('slider').value;
       font.draw(ctx, text, 0, 50, test);
@@ -72,7 +70,7 @@ const DisplayFont = ({ file }) => {
 
   const sliderVal = e => {
     document.getElementById('fontSize').innerHTML =
-      document.getElementById('slider').value + ' px';
+      'Size: ' + document.getElementById('slider').value + ' px';
     reloadFont();
   };
 
@@ -92,8 +90,12 @@ const DisplayFont = ({ file }) => {
     });
   };
 
+  const windowResize = e => {
+    console.log('hello');
+  };
+
   return (
-    <div>
+    <div onresize={windowResize}>
       <div className='info'>
         <div className='display-font-top'>
           <input
@@ -103,7 +105,7 @@ const DisplayFont = ({ file }) => {
             placeholder='Type here to preview text'
           />
           <input type='range' name='' id='slider' onChange={sliderVal} />
-          <p id='fontSize'>50px</p>
+          <p id='fontSize'>Size: 50px</p>
         </div>
         <br />
         <div className='info'>
