@@ -104,8 +104,8 @@ const DisplayFont = ({ file }) => {
             onChange={sampleText}
             placeholder='Type here to preview text'
           />
-          <input type='range' name='' id='slider' onChange={sliderVal} />
           <p id='fontSize'>Size: 50px</p>
+          <input type='range' name='' id='slider' onChange={sliderVal} />
         </div>
         <br />
         <div className='info'>

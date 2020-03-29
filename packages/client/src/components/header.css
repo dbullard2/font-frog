@@ -154,7 +154,7 @@ p:hover {
   border-radius: 3px;
 }
 
-.review input {
+.review-inner input {
   border: none;
   border-bottom: 1px solid #38444d;
 }
@@ -162,21 +162,47 @@ p:hover {
 #name {
   font-weight: bold;
   font-size: 16px;
-  width: 150px;
+  width: 160px;
 }
 
 .feedback-content h1 {
   text-align: center;
 }
 
-.top {
-  display: flex;
-}
-
 .rating {
   margin-left: auto;
 }
 
-.star:hover {
+.review-inner {
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.star-rating {
+  float: right;
   color: orange;
+}
+
+.star-input {
+  position: absolute !important;
+  left: -9999999px !important;
+}
+
+#review-text {
+  width: 100%;
+  resize: none;
+  margin-top: 1rem;
+  overflow: auto;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Cantarell', sans-serif;
+}
+
+.bottom {
+  width: 100%;
+}
+
+.bottom p {
+  margin-left: 90%;
 }

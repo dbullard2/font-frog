@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import Index from './Todo-List/Index';
 import logo from '../img/logo.svg';
 import './header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   const refresh = e => {
@@ -63,7 +65,8 @@ const Header = () => {
   const temp = e => {
     document.getElementById('riddle').setAttribute('style', 'display: none !important;');
     var content = document.getElementsByClassName('modal-content')[0];
-    content.innerHTML = '<a href="/gif/monty-python-and-the-holy-grail-the-bridge-of-death-6tzcHH" title="Monty Python and the Holy Grail - The Bridge of Death"><img src="https://i.makeagif.com/media/8-06-2015/6tzcHH.gif" alt="Monty Python and the Holy Grail - The Bridge of Death"></a>';
+    content.innerHTML =
+      '<a href="/gif/monty-python-and-the-holy-grail-the-bridge-of-death-6tzcHH" title="Monty Python and the Holy Grail - The Bridge of Death"><img src="https://i.makeagif.com/media/8-06-2015/6tzcHH.gif" alt="Monty Python and the Holy Grail - The Bridge of Death"></a>';
   };
 
   /* review modal #########################################################*/
@@ -76,6 +79,18 @@ const Header = () => {
     var reviews = document.getElementById('reviews');
     reviews.style.display = 'none';
     //get the date var d = new Date().toString().split(' ').splice(1, 3).join(' ');
+  };
+
+  const charCount = e => {
+    var maxLength = 280;
+    var currentLength = document.getElementById('review-text');
+    currentLength = currentLength.value.length;
+    document.getElementById('char').innerText = currentLength + '/280';
+    if (currentLength == maxLength) {
+      document.getElementById('char').style.color = 'red';
+    } else {
+      document.getElementById('char').style.color = 'black';
+    }
   };
 
   /* Feedback Modal ###################################################### */
@@ -107,7 +122,10 @@ const Header = () => {
             &times;
           </span>
           <form className='riddle-form' id='riddle'>
-            <p>Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see.</p>
+            <p>
+              Stop! Who would cross the Bridge of Death must answer me these questions three,
+              'ere the other side he see.
+            </p>
             <div className='riddle'>
               <label htmlFor='name'>What is your name?</label>
               <input type='text' id='name' />
@@ -137,9 +155,49 @@ const Header = () => {
           <h1>Reviews</h1>
           <div className='reviews'>
             <div className='review'>
-              <div className='top'>
-                <input type='text' placeholder='Enter your name' id='name' maxLength='15' />
-                <div className='rating'></div>
+              <div className='review-inner'>
+                <div className='top'>
+                  <input
+                    type='text'
+                    placeholder="What's your name?"
+                    maxLength='15'
+                    id='name'
+                  />
+                  <div className='star-rating'>
+                    <label htmlFor='one'>
+                      <FontAwesomeIcon icon={faStar} />
+                    </label>
+                    <input type='radio' name='one-star' id='one' className='star-input' />
+                    <label htmlFor='two'>
+                      <FontAwesomeIcon icon={faStar} />
+                    </label>
+                    <input type='radio' name='two-star' id='two' className='star-input' />
+                    <label htmlFor='three'>
+                      <FontAwesomeIcon icon={faStar} />
+                    </label>
+                    <input type='radio' name='three-star' id='three' className='star-input' />
+                    <label htmlFor='four'>
+                      <FontAwesomeIcon icon={faStar} />
+                    </label>
+                    <input type='radio' name='four-star' id='four' className='star-input' />
+                    <label htmlFor='five'>
+                      <FontAwesomeIcon icon={faStar} />
+                    </label>
+                    <input type='radio' name='five-star' id='five' className='star-input' />
+                  </div>
+                </div>
+                <textarea
+                  id='review-text'
+                  cols='30'
+                  rows='10'
+                  placeholder='What do you think?'
+                  maxLength='280'
+                  spellCheck='false'
+                  onKeyUp={charCount}
+                ></textarea>
+                <div className='bottom'>
+                  <p id='char'>0/280</p>
+                </div>
               </div>
             </div>
           </div>

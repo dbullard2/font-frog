@@ -6,8 +6,7 @@ import logo from '../img/logo.svg';
 const FileUpload = () => {
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
-  const [uploadedFile, setUploadedFile] = useState({}); // eslint-disable-next-line
-  const [message, setMessage] = useState('');
+  const [uploadedFile, setUploadedFile] = useState({});
   const [uploaded, setUploaded] = useState(false);
   const [fileChosen, setFileChosen] = useState(false);
 
@@ -51,9 +50,7 @@ const FileUpload = () => {
             headers: {
               'Content-Type': 'multipart/form-data'
             },
-            onUploadProgress: progressEvent => {
-              // Clear percentage
-            }
+            onUploadProgress: progressEvent => {}
           });
 
           const { fileName, filePath } = res.data;
@@ -66,13 +63,9 @@ const FileUpload = () => {
           };
 
           hide();
-
-          setMessage('File Uploaded');
         } catch (err) {
           if (err.response.status === 500) {
-            setMessage('There was a problem with the server');
           } else {
-            setMessage(err.response.data.msg);
           }
         }
       }
@@ -112,35 +105,22 @@ const FileUpload = () => {
     if (extensionList.includes(extension) === false) {
       alert2();
     } else {
-      try {
-        const res = await axios.post('/uploads', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          },
-          onUploadProgress: progressEvent => {
-            // Clear percentage
-          }
-        });
-
-        const { fileName, filePath } = res.data;
-
-        setUploadedFile({ fileName, filePath });
-        setUploaded(true);
-
-        const hide = e => {
-          document.getElementById('main').style.display = 'none';
-        };
-
-        hide();
-
-        setMessage('File Uploaded');
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
+      const res = await axios.post('/uploads', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-      }
+      });
+
+      const { fileName, filePath } = res.data;
+
+      setUploadedFile({ fileName, filePath });
+      setUploaded(true);
+
+      const hide = e => {
+        document.getElementById('main').style.display = 'none';
+      };
+
+      hide();
     }
   };
 
@@ -156,21 +136,14 @@ const FileUpload = () => {
           onDrop={e => handleDrop(e)}
         >
           <h1>Drag & drop your font file here!</h1>
-          <div className='custom-file mb-4'>
-            <input
-              type='file'
-              className='custom-file-input'
-              id='customFile'
-              onChange={onChange}
-            />
-            <label className='custom-file-label' htmlFor='customFile'>
-              Or upload your font manually
-            </label>
+          <div>
+            <input type='file' id='customFile' onChange={onChange} />
+            <label htmlFor='customFile'>Or upload your font manually</label>
             {fileChosen && <h3 className='text-center'>{filename}</h3>}
           </div>
 
           <hr />
-          <input type='submit' value='Upload' className='btn btn-primary btn-block mt-4' />
+          <input type='submit' value='Upload' />
         </form>
       </div>
 

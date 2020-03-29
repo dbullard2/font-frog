@@ -1,26 +1,26 @@
 x font frog logo in navbar should be  right clickable w/ custom context menu w/ login option, taking me to a login screen (firebase authorisation) that allows me to check off items from the feedback page
-- create modal for when user trys to upload without choosing file
+x create modal for when user trys to upload without choosing file
 - fix site for different screen sizes / browsers
 x when a valid file is uploaded, hide FileUpload component and display DisplayFont
 - CLEAN UP CODE !!!
     x fix eslint errors
     - organise css
-    -organise js functions
+    - organise js functions
     - find and remove unused code
     - commbine header.css and style.scss
 - create admin page w/ login
 - integrate firebase so that feedback requests persist - https://blog.bitsrc.io/building-a-todo-app-in-react-with-firebase-and-redux-ba3ab53a671b
-    x only show unchecked trash icon & ability to check boxes on admin page
+    - only show unchecked trash icon & ability to check boxes on admin page
 -finish review functionality
     - make sure they persist
     - date next to the name
     - star rating in the top right
-    -possible add likes to the reviews so that people can know which ones are 'popular' / trustworthy
-    -reviews should have borders
-    -add ability for me to reply to reviews
+    - possible add likes to the reviews so that people can know which ones are 'popular' / trustworthy
+    - reviews should have borders
+    - add ability for me to reply to reviews
 - make DisplayFont look better
-    - make font preview wider (100%)
-    - scale up 'type here to preview text'
+    x make font preview wider (100%)
+    x scale up 'type here to preview text'
     - style font size slider
 - create admin page
     -riddles should line up; response boxes should line up
