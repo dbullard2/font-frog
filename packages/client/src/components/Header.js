@@ -86,7 +86,7 @@ const Header = () => {
     var currentLength = document.getElementById('review-text');
     currentLength = currentLength.value.length;
     document.getElementById('char').innerText = currentLength + '/280';
-    if (currentLength == maxLength) {
+    if (currentLength === maxLength) {
       document.getElementById('char').style.color = 'red';
     } else {
       document.getElementById('char').style.color = 'black';
@@ -197,6 +197,9 @@ const Header = () => {
                 ></textarea>
                 <div className='bottom'>
                   <p id='char'>0/280</p>
+                </div>
+                <div className='submit'>
+                  <button>Submit</button>
                 </div>
               </div>
             </div>
