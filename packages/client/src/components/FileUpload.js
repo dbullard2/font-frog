@@ -10,30 +10,30 @@ const FileUpload = () => {
   const [uploaded, setUploaded] = useState(false);
   const [fileChosen, setFileChosen] = useState(false);
 
-  const onChange = e => {
+  const onChange = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
     setFileChosen(true);
   };
 
-  const alert2 = e => {
+  const alert2 = (e) => {
     const modal = document.getElementById('theModal');
     const span = document.getElementById('close');
 
     modal.style.display = 'block';
 
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = 'none';
     };
 
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target === modal) {
         modal.style.display = 'none';
       }
     };
   };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -48,9 +48,9 @@ const FileUpload = () => {
         try {
           const res = await axios.post('/uploads', formData, {
             headers: {
-              'Content-Type': 'multipart/form-data'
+              'Content-Type': 'multipart/form-data',
             },
-            onUploadProgress: progressEvent => {}
+            onUploadProgress: (progressEvent) => {},
           });
 
           const { fileName, filePath } = res.data;
@@ -58,7 +58,7 @@ const FileUpload = () => {
           setUploadedFile({ fileName, filePath });
           setUploaded(true);
 
-          const hide = e => {
+          const hide = (e) => {
             document.getElementById('main').style.display = 'none';
           };
 
@@ -73,25 +73,25 @@ const FileUpload = () => {
   };
 
   //Drag and Drop Functionality
-  const handleDragEnter = e => {
+  const handleDragEnter = (e) => {
     document.getElementById('test').style.borderColor = '#ff4cb4';
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const handleDragLeave = e => {
+  const handleDragLeave = (e) => {
     document.getElementById('test').style.borderColor = '#00f534';
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const handleDragOver = e => {
+  const handleDragOver = (e) => {
     document.getElementById('test').style.borderColor = '#ff4cb4';
     e.preventDefault();
     e.stopPropagation();
   };
 
-  const handleDrop = async e => {
+  const handleDrop = async (e) => {
     document.getElementById('test').style.borderColor = '#00f534';
     e.preventDefault();
     e.stopPropagation();
@@ -107,8 +107,8 @@ const FileUpload = () => {
     } else {
       const res = await axios.post('/uploads', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
       const { fileName, filePath } = res.data;
@@ -116,7 +116,7 @@ const FileUpload = () => {
       setUploadedFile({ fileName, filePath });
       setUploaded(true);
 
-      const hide = e => {
+      const hide = (e) => {
         document.getElementById('main').style.display = 'none';
       };
 
@@ -130,10 +130,10 @@ const FileUpload = () => {
         <form
           onSubmit={onSubmit}
           id='test'
-          onDragEnter={e => handleDragEnter(e)}
-          onDragLeave={e => handleDragLeave(e)}
-          onDragOver={e => handleDragOver(e)}
-          onDrop={e => handleDrop(e)}
+          onDragEnter={(e) => handleDragEnter(e)}
+          onDragLeave={(e) => handleDragLeave(e)}
+          onDragOver={(e) => handleDragOver(e)}
+          onDrop={(e) => handleDrop(e)}
         >
           <h1>Drag & drop your font file here!</h1>
           <div>
@@ -154,8 +154,7 @@ const FileUpload = () => {
           </span>
           <img src={logo} alt='Font Frog Logo' />
           <p>
-            Font Frog only accepts .ttf, .otf, .woff, & .woff2 files. Please upload a
-            compatible file
+            Font Frog only accepts .ttf, .otf, & .woff files. Please upload a compatible file
           </p>
         </div>
       </div>
