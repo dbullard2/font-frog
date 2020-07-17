@@ -21,10 +21,11 @@ x when a valid file is uploaded, hide FileUpload component and display DisplayFo
 - make DisplayFont look better
     x make font preview wider (100%)
     x scale up 'type here to preview text'
-    - style font size slider
+    x style font size slider
 - create admin page
-    -riddles should line up; response boxes should line up
+    x riddles should line up; response boxes should line up
 - get rid of unused packages
+- add readme
 
 -server.js backup
 

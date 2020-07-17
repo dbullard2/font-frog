@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-  const refresh = e => {
+  const refresh = (e) => {
     window.location.reload();
   };
 
@@ -14,7 +14,7 @@ const Header = () => {
 
   var menuState = 0;
 
-  document.addEventListener('contextmenu', function(e) {
+  document.addEventListener('contextmenu', function (e) {
     const nav = document.getElementById('logo');
     if (e.target === nav) {
       e.preventDefault();
@@ -24,7 +24,7 @@ const Header = () => {
     }
   });
 
-  const toggleMenuOn = e => {
+  const toggleMenuOn = (e) => {
     var menu = document.querySelector('.context-menu');
     var active = 'context-menu--active';
 
@@ -34,7 +34,7 @@ const Header = () => {
     }
   };
 
-  const toggleMenuOff = e => {
+  const toggleMenuOff = (e) => {
     var menu = document.querySelector('.context-menu');
     var activeClassName = 'context-menu--active';
     if (menuState !== 0) {
@@ -45,24 +45,24 @@ const Header = () => {
 
   /* login modal########################################################## */
 
-  const toggleModal = e => {
+  const toggleModal = (e) => {
     var modal = document.getElementById('myModal');
     modal.style.display = 'block';
   };
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     var modal = document.getElementById('myModal');
     var login = document.getElementById('login');
     modal.style.display = 'none';
     login.style.display = 'none';
   };
 
-  const combo = e => {
+  const combo = (e) => {
     toggleModal();
     toggleMenuOff();
   };
 
-  const temp = e => {
+  const temp = (e) => {
     document.getElementById('riddle').setAttribute('style', 'display: none !important;');
     var content = document.getElementsByClassName('modal-content')[0];
     content.innerHTML =
@@ -71,17 +71,17 @@ const Header = () => {
 
   /* review modal #########################################################*/
 
-  const showReviews = e => {
+  const showReviews = (e) => {
     document.getElementById('reviews').style.display = 'block';
   };
 
-  const hideReviews = e => {
+  const hideReviews = (e) => {
     var reviews = document.getElementById('reviews');
     reviews.style.display = 'none';
     //get the date var d = new Date().toString().split(' ').splice(1, 3).join(' ');
   };
 
-  const charCount = e => {
+  const charCount = (e) => {
     var maxLength = 280;
     var currentLength = document.getElementById('review-text');
     currentLength = currentLength.value.length;
@@ -95,11 +95,11 @@ const Header = () => {
 
   /* Feedback Modal ###################################################### */
 
-  const showFeedback = e => {
+  const showFeedback = (e) => {
     document.getElementById('feedback').style.display = 'block';
   };
 
-  const hideFeedback = e => {
+  const hideFeedback = (e) => {
     document.getElementById('feedback').style.display = 'none';
   };
 
@@ -124,22 +124,20 @@ const Header = () => {
           <form className='riddle-form' id='riddle'>
             <p>
               Stop! Who would cross the Bridge of Death must answer me these questions three,
+              <br />
               'ere the other side he see.
             </p>
-            <div className='riddle'>
+            <br />
+            <br />
+            <div className='questions'>
               <label htmlFor='name'>What is your name?</label>
               <input type='text' id='name' />
-            </div>
-            <br />
-            <div className='riddle'>
               <label htmlFor='quest'>What is your quest?</label>
               <input type='text' id='quest' />
-            </div>
-            <br />
-            <div className='riddle'>
               <label htmlFor='colour'>What is your favourite colour?</label>
               <input type='text' id='colour' />
             </div>
+            <br />
             <button type='submit' className='riddle-submit' onClick={temp}>
               Submit
             </button>

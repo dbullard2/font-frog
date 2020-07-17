@@ -138,7 +138,9 @@ const FileUpload = () => {
           <h1>Drag & drop your font file here!</h1>
           <div>
             <input type='file' id='customFile' onChange={onChange} />
-            <label htmlFor='customFile'>Or upload your font manually</label>
+            <label className='drag-subtitle' htmlFor='customFile'>
+              Or upload your font manually
+            </label>
             {fileChosen && <h3 className='text-center'>{filename}</h3>}
           </div>
 
@@ -148,7 +150,7 @@ const FileUpload = () => {
       </div>
 
       <div className='modal' id='theModal'>
-        <div className='modal-content'>
+        <div className='modal-content bad-file-modal'>
           <span className='close' id='close'>
             &times;
           </span>

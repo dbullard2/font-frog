@@ -4,7 +4,7 @@ import * as opentype from 'opentype.js';
 import './index.css';
 
 const DisplayFont = ({ file }) => {
-  opentype.load(file, function(err, font) {
+  opentype.load(file, function (err, font) {
     if (err) {
       console.log('font couldnt be loaded');
     } else {
@@ -49,9 +49,9 @@ const DisplayFont = ({ file }) => {
     return ctx;
   };
 
-  const reloadFont = e => {
+  const reloadFont = (e) => {
     var inputBox = document.getElementById('input');
-    opentype.load(file, function(err, font) {
+    opentype.load(file, function (err, font) {
       if (err) {
         console.log('font cant be loaded');
       } else {
@@ -68,16 +68,16 @@ const DisplayFont = ({ file }) => {
     });
   };
 
-  const sliderVal = e => {
+  const sliderVal = (e) => {
     document.getElementById('fontSize').innerHTML =
       'Size: ' + document.getElementById('slider').value + ' px';
     reloadFont();
   };
 
-  const sampleText = e => {
+  const sampleText = (e) => {
     var inputBox = document.getElementById('input');
 
-    opentype.load(file, function(err, font) {
+    opentype.load(file, function (err, font) {
       if (err) {
         console.log('font couldnt be loaded');
       } else {
@@ -90,7 +90,7 @@ const DisplayFont = ({ file }) => {
     });
   };
 
-  const windowResize = e => {
+  const windowResize = (e) => {
     console.log('hello');
   };
 
@@ -119,7 +119,7 @@ const DisplayFont = ({ file }) => {
 };
 
 DisplayFont.propTypes = {
-  fontName: PropTypes.string
+  fontName: PropTypes.string,
 };
 
 export default DisplayFont;

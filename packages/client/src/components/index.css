@@ -3,13 +3,21 @@ body {
   font-family: 'Cantarell', sans-serif;
 }
 
-label {
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+.drag-subtitle {
   font-size: 1.5vw;
   text-decoration: underline;
   text-decoration-color: #ff4cb4;
 }
 
-label:hover {
+.drag-subtitle {
   cursor: pointer;
 }
 
@@ -88,13 +96,16 @@ input[type='submit'] {
   width: 80%;
   height: 50%;
   border-radius: 10px;
-  text-align: center;
 }
 
 .modal-content img {
   display: block;
   margin: 0 auto;
   width: 300px;
+}
+
+.bad-file-modal {
+  text-align: center;
 }
 
 .close {
@@ -156,7 +167,7 @@ input[type='submit'] {
 #slider {
   -webkit-appearance: none;
   appearance: none;
-  background: #ff4cb4;
+  background: rgba(255, 76, 180, 0.3);
   width: 32%;
   height: 3px;
   border-radius: 10px;
@@ -164,15 +175,40 @@ input[type='submit'] {
 
 #slider::-webkit-slider-thumb {
   appearance: none;
-  background: #00f534;
+  background: #ff4cb4;
   border: none;
 }
 
 #slider::-moz-range-thumb {
-  background: #00f534;
+  background: #ff4cb4;
   border: none;
+}
+
+input[type='range']::-moz-focus-outer {
+  border: 0;
 }
 
 .glyph-canvas {
   border: 1px solid #dadce0;
+}
+
+.questions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.questions label {
+  font-weight: bold;
+}
+
+.riddle-form p {
+  text-align: center;
+}
+
+.riddle-submit {
+  margin: 0 auto !important;
+  display: block !important;
 }
